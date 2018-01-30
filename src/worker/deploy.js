@@ -13,7 +13,7 @@ const deploy = async ({
   repoName,
   commitHash
 }) => {
-  if (isPullRequest || branchName !== 'feature/cd') return;
+  if (isPullRequest || branchName !== 'master') return;
 
   log(`Received webhook for project ${repoName}`);
 
