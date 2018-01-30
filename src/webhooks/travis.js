@@ -19,7 +19,7 @@ module.exports = (req, res) => {
     return res.status(400).send(e.stack);
   }
 
-  if (config.manager.trustWebhooks) {
+  if (config.manager.blindlyTrustWebhooks) {
     deploy(options).then(() => res.end()).catch(e => res.status(500).send(e.stack));
   } else {
     if (!req.headers.signature) return res.status(400).send('Missing payload signature');

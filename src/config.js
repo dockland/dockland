@@ -7,7 +7,7 @@ module.exports = {
     port: process.env.MANAGER_PORT || 5000,
     // use truthy value to bypass payload validation when receiving webhooks
     // see (https://docs.travis-ci.com/user/notifications/#Verifying-Webhook-requests)
-    trustWebhooks: process.env.TRUST_WEBHOOKS
+    blindlyTrustWebhooks: process.env.BLINDLY_TRUST_WEBHOOKS
   },
   proxy: {
     // base domain name for proxy, deployed apps will be listening on [repoName].[domain]
