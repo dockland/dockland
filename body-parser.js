@@ -6,6 +6,11 @@ module.exports = (next) => (req, res) => {
   });
 
   req.on('end', () => {
-    next(Object.assign({}, req, { body: JSON.parse(body.toString()) }), res);
+    next(
+      Object.assign({}, req, {
+        body: JSON.parse(decodeURIComponent(body.toString().substring(8)))
+      }),
+      res
+    );
   });
 };

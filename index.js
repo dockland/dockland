@@ -51,7 +51,7 @@ const deploy = (metadata) => {
     src = path.join(src, branchName.replace(/\//g, '-'));
     if (!fs.existsSync(src)) fs.mkdirSync(src);
 
-    pull({ image: `m1ch3lcl/${name.toLowerCase()}`, cwd: src })
+    pull({ image: `ebm1718travis/${name.toLowerCase()}`, cwd: src })
       .then(() =>
         updateDockerCompose({
           ownerName,
@@ -71,4 +71,4 @@ const server = http.createServer(
   })
 );
 
-server.listen(5000);
+server.listen(process.env.PORT || 80);
