@@ -1,0 +1,27 @@
+{
+  "name": "nodock",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EBM-2017-2018/nodock.git"
+  },
+  "keywords": [
+    "docker",
+    "nodejs",
+    "cd",
+    "deployment",
+    "hook"
+  ],
+  "author": "Thomas Gaudin, Clément Michel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EBM-2017-2018/nodock/issues"
+  },
+  "homepage": "https://github.com/EBM-2017-2018/nodock#readme",
+  "dependencies": {}
+}
