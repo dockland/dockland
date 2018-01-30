@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "dotenv node src/app",
+    "start": "node src/app",
+    "start-env": "dotenv node src/app",
     "test": "echo \"Error: no test specified\" && exit 1",
     "setup-env": "node -e \"(fs => fs.existsSync('.env') || fs.copyFileSync('.env.example', '.env'))(require('fs'))\""
   },
