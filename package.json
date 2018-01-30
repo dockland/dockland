@@ -1,10 +1,13 @@
 {
   "name": "nodock",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/app",
+    "start-env": "dotenv node src/app",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "setup-env": "node -e \"(fs => fs.existsSync('.env') || fs.copyFileSync('.env.example', '.env'))(require('fs'))\""
   },
   "repository": {
     "type": "git",
@@ -24,6 +27,10 @@
   },
   "homepage": "https://github.com/EBM-2017-2018/nodock#readme",
   "dependencies": {
-    "@nodock/redbird": "^0.7.1"
+    "@nodock/redbird": "^0.7.1",
+    "body-parser": "^1.18.2",
+    "dotenv-cli": "^1.4.0",
+    "express": "^4.16.2",
+    "node-fetch": "^1.7.3"
   }
 }

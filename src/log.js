@@ -1,0 +1,1 @@
+module.exports = (...msgs) => console.log('>>>>', ...msgs);

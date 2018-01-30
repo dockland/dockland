@@ -15,10 +15,10 @@ module.exports.pull = ({ image, cwd }) =>
     cwd
   });
 
-module.exports.updateDockerCompose = ({ ownerName, name, commit, dest }) =>
+module.exports.updateDockerCompose = ({ ownerName, repoName, commitHash, dest }) =>
   new Promise((resolve, reject) =>
     https.get(
-      `https://raw.githubusercontent.com/${ownerName}/${name}/${commit}/docker-compose.yml`,
+      `https://raw.githubusercontent.com/${ownerName}/${repoName}/${commitHash}/docker-compose.yml`,
       (res) => {
         if (res.statusCode !== 200) {
           reject(new Error('No docker-compose.yml found for this project'));
