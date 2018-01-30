@@ -5,8 +5,8 @@ const bodyParser = require('./body-parser');
 const { mkdirp } = require('./fs');
 const { pull, updateDockerCompose, dockerComposeUp } = require('./docker');
 
-const dockerproxy = require('redbird').docker;
-const redbird = require('redbird')({
+const dockerproxy = require('@nodock/redbird').docker;
+const redbird = require('@nodock/redbird')({
   port: process.env.PROXY_PORT || 80,
   bunyan: false,
   letsencrypt: {

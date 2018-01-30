@@ -24,6 +24,6 @@
   },
   "homepage": "https://github.com/EBM-2017-2018/nodock#readme",
   "dependencies": {
-    "redbird": "^0.7.0"
+    "@nodock/redbird": "^0.7.0"
   }
 }
