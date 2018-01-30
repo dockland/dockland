@@ -18,6 +18,8 @@ EnvironmentFile=/home/mycustomuser/nodock/.env
 User=mycustomuser
 WorkingDirectory=/home/mycustomuser/nodock
 ```
+- `sudo systemctl daemon-reload`
+- `sudo setcap 'cap_net_bind_service=+ep' /usr/bin/node` This allows node to bind to ports < 1024 even for non-root users
 - `sudo systemctl start nodock`
 - `sudo systemctl enable nodock` if you want it to run at boot
 
