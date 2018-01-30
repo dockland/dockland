@@ -22,10 +22,12 @@ module.exports = (req, res) => {
   if (config.manager.trustWebhooks) {
     deploy(options).then(() => res.end()).catch(e => res.status(500).send(e.stack));
   } else {
+    if (!req.headers.signature) return res.status(400).send('Missing payload signature');
+
     const signature = Buffer.from(req.headers.signature, 'base64');
 
-    fetch('https://api.travis-ci.org/config').then(response => response.json()).then(config => {
-      const travisKey = config.notifications.webhook.public_key;
+    fetch('https://api.travis-ci.org/config').then(response => response.json()).then((data) => {
+      const travisKey = data.config.notifications.webhook.public_key;
       const verifier = crypto.createVerify('sha1');
       verifier.update(req.body.payload);
       
