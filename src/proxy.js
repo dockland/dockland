@@ -24,7 +24,14 @@ const images = new Set();
 module.exports.watch = (domain, imageName) => {
   if (!images.has(imageName)) {
     log(`Registering new proxy domain : ${domain}`);
-    dockerproxy(proxy).register(domain, imageName);
+    dockerproxy(proxy).register(domain, imageName, {
+      ssl: {
+        letsencrypt: {
+          email: 'ebm1718travis@gmail.com',
+          production: true,
+        }
+      }
+    });
     images.add(imageName);
   }
 };

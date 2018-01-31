@@ -14,6 +14,13 @@ app.use(bodyParser.urlencoded({
 app.use('/webhooks', require('./webhooks'));
 
 app.listen(config.manager.port, () => {
-  require('./proxy').register(config.manager.domain, `localhost:${config.manager.port}`);
+  require('./proxy').register(config.manager.domain, `localhost:${config.manager.port}`, {
+    ssl: {
+      letsencrypt: {
+        email: 'ebm1718travis@gmail.com',
+        production: true,
+      }
+    }
+  });
   log(`listening on ${config.manager.domain}:${config.proxy.port}`);
 });
