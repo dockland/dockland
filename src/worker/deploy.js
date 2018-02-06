@@ -31,7 +31,7 @@ const deploy = async ({
       dest: path.join(src, 'docker-compose.yml')
     });
 
-    await dockerComposeUp({ cwd: src });
+    await dockerComposeUp({ cwd: src, projectName: `${repoName}-${branchName}` });
 
     proxy.watch(domain, imageName);
   } catch(e) {
