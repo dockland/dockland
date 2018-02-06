@@ -30,7 +30,7 @@ module.exports.updateDockerCompose = ({ ownerName, repoName, commitHash, dest })
     )
   );
 
-module.exports.dockerComposeUp = ({ cwd }) =>
-  execp(`docker-compose up -d`, {
+module.exports.dockerComposeUp = ({ cwd, projectName }) =>
+  execp(`docker-compose -p ${projectName} up -d`, {
     cwd
   });
