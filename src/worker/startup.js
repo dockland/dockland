@@ -12,9 +12,9 @@ const startInstance = (projectName, { name, domain, src, image }) =>
 
 module.exports = () => {
   const projects = storage.findProjects();
-  
+
   if (projects.length === 0) return;
-  
+
   const promises = projects.reduce(
     (promises, project) =>
       promises.concat(
@@ -34,10 +34,10 @@ module.exports = () => {
 
   Promise.all(promises).then(status => {
     const failures = status.filter(s => !!s);
-    const count = failures.length;
+    const failCount = failures.length;
 
-    if (failures.length > 0) {
-      log(`${count} instance${count > 1 ? 's' : ''} could not be revived : `);
+    if (failCount > 0) {
+      log(`${failCount} instance${failCount > 1 ? 's' : ''} could not be revived : `);
       failures.forEach(f => log(`\t${f.project} - ${f.instance} : ${f.error}`));
     } else log('All instances are back alive !');
   });
