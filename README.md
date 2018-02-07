@@ -21,6 +21,7 @@ Tested on Debian 8
 
 ```ini
 [Service]
+EnvironmentFile=
 EnvironmentFile=/home/mycustomuser/dockland/.env
 User=mycustomuser
 WorkingDirectory=/home/mycustomuser/dockland
