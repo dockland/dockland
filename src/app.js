@@ -18,7 +18,7 @@ app.listen(config.manager.port, () => {
     ssl: {
       letsencrypt: {
         email: 'ebm1718travis@gmail.com',
-        production: true,
+        production: config.proxy.letsEncryptProduction,
       }
     }
   });
