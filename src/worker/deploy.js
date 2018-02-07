@@ -2,10 +2,18 @@ const path = require('path');
 const { mkdirp } = require('./_fsutils.js');
 const { pull, updateDockerCompose, dockerComposeUp } = require('./_dockerutils');
 
-const config = require('../config')
+const config = require('../config');
+const storage = require('../storage');
 const proxy = require('../proxy');
 const log = require('../log');
 
+/**
+ * Deploy a new instance with the following steps :
+ * 1. Pull image from docker hub
+ * 2. Fetch updated docker-compose.yml from Github repo
+ * 3. Update Docker-Compose stack
+ * @param {object} metadata 
+ */
 const deploy = async ({
   branchName,
   isPullRequest,
@@ -32,6 +40,16 @@ const deploy = async ({
     });
 
     await dockerComposeUp({ cwd: src, projectName: `${repoName}-${branchName}` });
+
+    storage.upsertProject({
+      name: repoName
+    });
+    storage.addInstance(repoName, { 
+      name: branchName,
+      image: imageName,
+      domain,
+      src
+    });
 
     proxy.watch(domain, imageName);
   } catch(e) {

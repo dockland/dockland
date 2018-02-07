@@ -23,4 +23,6 @@ app.listen(config.manager.port, () => {
     }
   });
   log(`listening on ${config.manager.domain}:${config.proxy.port}`);
+
+  require('./worker/startup')();
 });

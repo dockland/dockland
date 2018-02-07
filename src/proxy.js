@@ -21,6 +21,13 @@ module.exports = proxy;
 
 const images = new Set();
 
+/**
+ * Register an existing Docker image to be watched by Redbird proxy.
+ * Any container instanciated from this image will be used as a target for
+ * incoming requests to this domain name.
+ * @param {string} domain
+ * @param {string} imageName
+ */
 module.exports.watch = (domain, imageName) => {
   if (!images.has(imageName)) {
     log(`Registering new proxy domain : ${domain}`);
