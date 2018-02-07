@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/EBM-2017-2018/dockland.git"
+    "url": "git+https://github.com/dockland/dockland.git"
   },
   "keywords": [
     "docker",
@@ -23,9 +23,9 @@
   "author": "Thomas Gaudin, Clément Michel",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/EBM-2017-2018/dockland/issues"
+    "url": "https://github.com/dockland/dockland/issues"
   },
-  "homepage": "https://github.com/EBM-2017-2018/dockland#readme",
+  "homepage": "https://github.com/dockland/dockland#readme",
   "dependencies": {
     "@nodock/redbird": "^0.7.1",
     "body-parser": "^1.18.2",
