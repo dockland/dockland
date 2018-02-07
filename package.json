@@ -1,5 +1,5 @@
 {
-  "name": "nodock",
+  "name": "dockland",
   "version": "0.2.0",
   "description": "",
   "main": "index.js",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/EBM-2017-2018/nodock.git"
+    "url": "git+https://github.com/EBM-2017-2018/dockland.git"
   },
   "keywords": [
     "docker",
@@ -23,9 +23,9 @@
   "author": "Thomas Gaudin, Clément Michel",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/EBM-2017-2018/nodock/issues"
+    "url": "https://github.com/EBM-2017-2018/dockland/issues"
   },
-  "homepage": "https://github.com/EBM-2017-2018/nodock#readme",
+  "homepage": "https://github.com/EBM-2017-2018/dockland#readme",
   "dependencies": {
     "@nodock/redbird": "^0.7.1",
     "body-parser": "^1.18.2",

@@ -1,13 +1,13 @@
 [Unit]
-Description=nodock - Webhooks triggered by Travis that updates docker images
-Documentation=https://github.com/nodock/nodock
+Description=dockland - Webhooks triggered by Travis that updates docker images
+Documentation=https://github.com/dockland/dockland
 After=network.target
 
 [Service]
-EnvironmentFile=/home/user/nodock/.env
+EnvironmentFile=/home/user/dockland/.env
 Type=simple
 User=user
-WorkingDirectory=/home/user/nodock
+WorkingDirectory=/home/user/dockland
 ExecStart=/usr/bin/npm start
 Restart=on-failure
 
