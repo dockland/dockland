@@ -1,0 +1,15 @@
+[Unit]
+Description=dockland - Webhooks triggered by Travis that updates docker images
+Documentation=https://github.com/dockland/dockland
+After=network.target
+
+[Service]
+EnvironmentFile=/home/user/dockland/.env
+Type=simple
+User=user
+WorkingDirectory=/home/user/dockland
+ExecStart=/usr/bin/npm start
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

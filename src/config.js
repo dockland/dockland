@@ -15,7 +15,9 @@ module.exports = {
     // port for https connections
     sslPort: process.env.HTTPS_PROXY_PORT,
     // port for http connection
-    port: process.env.PROXY_PORT
+    port: process.env.PROXY_PORT,
+    // enable production mode for Let's Encrypt
+    letsEncryptProduction: process.env.LETS_ENCRYPT_PRODUCTION
   },
   docker: {
     // root folder to store docker-compose.yml files

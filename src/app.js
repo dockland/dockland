@@ -18,9 +18,11 @@ app.listen(config.manager.port, () => {
     ssl: {
       letsencrypt: {
         email: 'ebm1718travis@gmail.com',
-        production: true,
+        production: config.proxy.letsEncryptProduction,
       }
     }
   });
   log(`listening on ${config.manager.domain}:${config.proxy.port}`);
+
+  require('./worker/startup')();
 });
