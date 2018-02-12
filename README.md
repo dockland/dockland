@@ -1,5 +1,7 @@
 Dockland
-======
+========
+
+![Dockland logo](dockland_logo.png)
 
 This project combines a [Redbird](https://github.com/OptimalBits/redbird) reverse-proxy and a Travis web-hook, to automagically redeploy updated Docker images and register them as new subdomains.
 
@@ -36,3 +38,4 @@ WorkingDirectory=/home/mycustomuser/dockland
 
 - [Clément MICHEL](https://github.com/m1ch3lcl)
 - [Thomas GAUDIN](https://github.com/nymous)
+- Logo handcrafted with :heart: by [Bastien HUBER](https://github.com/searev)
