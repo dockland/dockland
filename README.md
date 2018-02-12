@@ -1,9 +1,9 @@
 Dockland
 ========
 
-![Dockland logo](dockland_logo.png)
-
 This project combines a [Redbird](https://github.com/OptimalBits/redbird) reverse-proxy and a Travis web-hook, to automagically redeploy updated Docker images and register them as new subdomains.
+
+![Dockland logo](dockland_logo.png)
 
 ## Dependencies
 
