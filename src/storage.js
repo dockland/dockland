@@ -41,6 +41,9 @@ const projects = db.get('projects');
  */
 module.exports.findProjects = criteria => projects.filter(criteria).cloneDeep().value();
 
+module.exports.getProject = projectName => projects.getById(projectName).cloneDeep().value();
+module.exports.getProjectInstance = (projectName, instanceName) => projects.getById(projectName).get('instances').getById(instanceName).cloneDeep().value();
+
 /**
  * Register or update an existing project
  * @param {Project} project

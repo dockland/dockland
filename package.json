@@ -28,7 +28,9 @@
   "homepage": "https://github.com/dockland/dockland#readme",
   "dependencies": {
     "@nodock/redbird": "^0.7.1",
+    "ansi-html": "0.0.7",
     "body-parser": "^1.18.2",
+    "dockerode": "^2.5.4",
     "dotenv-cli": "^1.4.0",
     "express": "^4.16.2",
     "js-yaml": "^3.10.0",
