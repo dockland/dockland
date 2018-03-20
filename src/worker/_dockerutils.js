@@ -30,6 +30,11 @@ module.exports.updateDockerCompose = ({ ownerName, repoName, commitHash, dest })
     )
   );
 
+const optFlag = (flag, condition) => condition ? flag : '';
+
+module.exports.dockerComposeLogs = ({ cwd, projectName, follow, timestamps, tail = 'all', services = [] }, callback) =>
+  exec(`docker-compose -p ${projectName} logs ${optFlag('-f', follow)} ${optFlag('-t', timestamps)} --tail=${tail} ${services.join(' ')}`, { cwd }, callback);
+
 module.exports.dockerComposeUp = ({ cwd, projectName }) =>
   execp(`docker-compose -p ${projectName} up -d`, {
     cwd

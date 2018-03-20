@@ -12,6 +12,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use('/webhooks', require('./webhooks'));
+app.use('/api', require('./api'));
 
 app.listen(config.manager.port, () => {
   require('./proxy').register(config.manager.domain, `localhost:${config.manager.port}`, {
