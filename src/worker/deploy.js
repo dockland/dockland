@@ -22,14 +22,15 @@ const deploy = async ({
   commitHash
 }) => {
   try {
-    if (isPullRequest || branchName !== 'master') return;
+    if (!isPullRequest && branchName !== 'master') return;
 
     log(`Received webhook for project ${repoName}`);
 
     const src = await mkdirp(config.docker.root, repoName, branchName.replace(/\//g, '-'));
 
-    const imageName = `ebm1718travis/${repoName.toLowerCase()}:latest`;
-    const domain = `${repoName.toLowerCase()}.${config.proxy.domain}`;
+    const tag = isPullRequest ? branchName : 'latest';
+    const imageName = `ebm1718travis/${repoName.toLowerCase()}:${tag}`;
+    const domain = `${isPullRequest ? branchName + '.' : ''}${repoName.toLowerCase()}.${config.proxy.domain}`;
 
     await pull({ image: imageName, cwd: src });
     await updateDockerCompose({
@@ -39,7 +40,7 @@ const deploy = async ({
       dest: path.join(src, 'docker-compose.yml')
     });
 
-    await dockerComposeUp({ cwd: src, projectName: `${repoName}-${branchName}` });
+    await dockerComposeUp({ cwd: src, projectName: `${repoName}-${branchName}`, tag });
 
     storage.upsertProject({
       name: repoName
@@ -48,7 +49,8 @@ const deploy = async ({
       name: branchName,
       image: imageName,
       domain,
-      src
+      src,
+      tag
     });
 
     proxy.watch(domain, imageName);

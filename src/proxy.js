@@ -3,7 +3,6 @@ const path = require('path');
 const config = require('./config');
 const log = require('./log');
 
-const dockerproxy = require('@nodock/redbird').docker;
 const proxy = require('@nodock/redbird')({
   port: config.proxy.port,
   bunyan: false,
@@ -16,6 +15,8 @@ const proxy = require('@nodock/redbird')({
     http2: true
   }
 });
+
+const dockerproxy = require('@nodock/redbird').docker(proxy);
 
 module.exports = proxy;
 
@@ -31,7 +32,7 @@ const images = new Set();
 module.exports.watch = (domain, imageName) => {
   if (!images.has(imageName)) {
     log(`Registering new proxy domain : ${domain}`);
-    dockerproxy(proxy).register(domain, imageName, {
+    dockerproxy.register(domain, imageName, {
       ssl: {
         letsencrypt: {
           email: 'ebm1718travis@gmail.com',
@@ -41,4 +42,15 @@ module.exports.watch = (domain, imageName) => {
     });
     images.add(imageName);
   }
+};
+
+/**
+ * Unregister docker image
+ * @param {string} domain
+ * @param {string} imageName
+ */
+module.exports.unwatch = (domain, imageName) => {
+  log(`Unregistering new proxy domain : ${domain}`);
+  images.delete(imageName);
+  dockerproxy.unregister(domain);
 };

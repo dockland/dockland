@@ -55,6 +55,9 @@ module.exports.upsertProject = project =>
     )
     .write();
 
+module.exports.deleteInstance = (projectName, instanceName) =>
+  projects.getById(projectName).get('instances').removeById(instanceName).write();
+
 /**
  * Register or update an existing instance in a project
  * @param {string} projectName

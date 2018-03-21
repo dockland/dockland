@@ -4,10 +4,11 @@ const log = require('../log');
 const proxy = require('../proxy');
 const storage = require('../storage');
 
-const startInstance = (projectName, { name, domain, src, image }) =>
+const startInstance = (projectName, { name, domain, src, image, tag }) =>
   dockerComposeUp({
     cwd: src,
-    projectName: `${projectName}-${name}`
+    projectName: `${projectName}-${name}`,
+    tag
   }).then(() => proxy.watch(domain, image));
 
 module.exports = () => {
