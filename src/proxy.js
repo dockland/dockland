@@ -3,7 +3,6 @@ const path = require('path');
 const config = require('./config');
 const log = require('./log');
 
-const dockerproxy = require('@nodock/redbird').docker;
 const proxy = require('@nodock/redbird')({
   port: config.proxy.port,
   bunyan: false,
@@ -16,6 +15,8 @@ const proxy = require('@nodock/redbird')({
     http2: true
   }
 });
+
+const dockerproxy = require('@nodock/redbird').docker;
 
 module.exports = proxy;
 
@@ -41,4 +42,15 @@ module.exports.watch = (domain, imageName) => {
     });
     images.add(imageName);
   }
+};
+
+/**
+ * Unregister docker image
+ * @param {string} domain
+ * @param {string} imageName
+ */
+module.exports.unwatch = (domain, imageName) => {
+  log(`Unregistering new proxy domain : ${domain}`);
+  images.delete(imageName);
+  dockerproxy(proxy).unregister(domain);
 };

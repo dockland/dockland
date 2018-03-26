@@ -9,8 +9,8 @@ module.exports = (req, res) => {
   const options = {};
   try {
     const metadata = JSON.parse(req.body.payload);
-    options.branchName = metadata.branch;
     options.isPullRequest = metadata.pull_request;
+    options.branchName = options.isPullRequest ? `pr-${metadata.pull_request_number}` : metadata.branch;
 
     options.ownerName = metadata.repository.owner_name;
     options.repoName = metadata.repository.name;

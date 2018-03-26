@@ -35,7 +35,14 @@ const optFlag = (flag, condition) => condition ? flag : '';
 module.exports.dockerComposeLogs = ({ cwd, projectName, follow, timestamps, tail = 'all', services = [] }, callback) =>
   exec(`docker-compose -p ${projectName} logs ${optFlag('-f', follow)} ${optFlag('-t', timestamps)} --tail=${tail} ${services.join(' ')}`, { cwd }, callback);
 
-module.exports.dockerComposeUp = ({ cwd, projectName }) =>
+module.exports.dockerComposeUp = ({ cwd, projectName, tag }) =>
   execp(`docker-compose -p ${projectName} up -d`, {
-    cwd
+    cwd,
+    env: { TAG: tag }
+  });
+
+module.exports.dockerComposeDown = ({ cwd, projectName, tag }) =>
+  execp(`docker-compose -p ${projectName} down`, {
+    cwd,
+    env: { TAG: tag }
   });
